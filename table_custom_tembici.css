@@ -50,8 +50,8 @@
   color: #696969;
   border-collapse: collapse;
   border-spacing: 3px;
-  table-layout: resize;
-  scroll-direction: horizontal;
+  table-layout: fixed;  
+  width: 240px;
  
 }
 
