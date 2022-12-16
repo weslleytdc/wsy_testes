@@ -128,8 +128,9 @@ th.headerCell {
   background-color: #e4ecf3;
 }
 
-.indexCell.transposed.measure {
+.indexCell.transposed.measure { /*Linhas das medidas*/
   background-color: #0045DD;
+  color: white; /*inserida*/
   /*background-color: #e4d0bd;*/
 }
 
