@@ -1,119 +1,190 @@
+@font-face {
+  font-family: 'Noto Sans TC';
+  src: url('./fonts/noto-sans-tc-v10-latin_chinese-traditional-regular.woff2') format('woff2')
+}
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('./fonts/noto-sans-sc-v11-latin_chinese-simplified-regular.woff2') format('woff2')
+}
+
+
 #tooltip {
-  position: absolute;
-  width: auto;
-  height: auto;
-  padding: 5px;
-  background-color: rgb(196, 29, 29);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-  pointer-events: none;
-  font-family: sans-serif;
-  font-size: 12px;
-  z-index: 2;
-
-  /* Add customization here  */
-
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    background-color: white;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    font-family: sans-serif;
+    font-size: 12px;
+    z-index: 2;
 }
 
-#tooltip.hidden {
-  display: none;
-
-/* Add customization here  */
-
+.tooltipTable {
+  font-family: Open Sans,Helvetica,Arial,sans-serif;
+  border: 0px;
+  border-collapse: collapse;
+  table-layout: auto;
 }
 
-#tooltip p {
-  margin: 0;
-  font-family: sans-serif;
-  font-size: 12px;
-  line-height: 15px;
+.focus {
+  font-weight: bold;
+}
 
-  /* Add customization here  */
+.hidden {
+    display: none;
+}
 
-
+.hover {
+  background-color: #ffffbb;
 }
 
 .reportTable {
-font-family: Open Sans,Helvetica,Arial,sans-serif;
-font-size: 12px;
-border: 1px solid #cd0808; 
-border-collapse: collapse;
-border-spacing: 3px;
-
-/* Add customization here  */
-
+  font-family: Open Sans,Helvetica,Arial,Noto Sans TC, Noto Sans SC,sans-serif;
+  color: #696969;
+  border-collapse: collapse;
+  border-spacing: 3px;
+  table-layout: fixed;
 }
 
-.reportTable th {
-color: #000000;
-border: 1px solid #d71212; 
-border-bottom: 1px solid #CCCCCC !important;
-/* font-size: 10px;  */
-/* height: 25px; */
-padding: 5px;
-
-/* Add customization here  */
-
+th.headerCell {
+  background-color: #F90083;
+  padding: 5px;
+  border-bottom: 1px solid #BDC3C7;
 }
 
-.reportTable td {
-color: #0d0dcd;
-vertical-align: super;
-padding: 5px;
-/*background: #FFFFFF;*/
-border: 1px solid #CCCCCC; 
-border-collapse: collapse;
-
-/* Add customization here  */
-
+.headerCell.dimension {
+  background-color: #0045DD;
+  border-right: 1px solid #BDC3C7; 
 }
 
-.left {
-text-align: left;
-
-/* Add customization here  */
-
+.headerCell.pivot {
+  background-color: #0045DD;
+  border-right: 1px solid #BDC3C7; 
 }
 
-.right {
-text-align: right !important;
-
-/* Add customization here  */
-
+.headerCell.measure {
+  background-color: #0045DD;
+  border-left: 1px solid #BDC3C7; 
 }
 
-.indent {
-padding-left: 15px !important;
+.headerCell.measure.calculation {
+  background-color: #c9dfC5;
+  border-left: 1px solid #BDC3C7;
+}
 
-/* Add customization here  */
+.headerCell.transposed.dimension {
+  background-color: #F90083;
+}
 
+.headerCell.transposed.dimension.merged {
+  background-color: #e4ecf3 !important;
+}
+
+/* .headerCell.dimension.headerRow {
+  background-color: #ccd8e4;
+  border-right: 1px solid #BDC3C7;
+}
+
+.headerCell.pivot.headerRow {
+  background-color: #ccd8e4;
+  border-right: 1px solid #BDC3C7;
+}
+
+.headerCell.measure.headerRow {
+  background-color: #ccd8e4;
+  border-left: 1px solid #BDC3C7;
+} */
+
+.rowCell {
+  vertical-align: super;
+  padding-left: 5px;
+  border-bottom: 1px solid #BDC3C7; 
+}
+
+.rowCell.merged {
+  background-color: #ffffff !important;
+}
+
+.indexCell.transposed {
+  font-weight: bold;
+}
+
+.indexCell.transposed.pivot {
+  background-color: #ccd8e4;
+}
+
+.indexCell.transposed.dimension {
+  background-color: #e4ecf3;
+}
+
+.indexCell.transposed.measure {
+  background-color: #e4d0bd;
+}
+
+.indexCell.transposed.calculation {
+  background-color: #c9dfc5;
+}
+
+.indexCell.transposed.pivot.merged {
+  background-color: #ccd8e4 !important;
+}
+
+.indexCell.transposed.dimension.merged {
+  background-color: #e4ecf3 !important;
+}
+
+.indexCell.transposed.measure.merged {
+  background-color: #e4d0bd !important;
+}
+
+.indexCell.transposed.calculation.merged {
+  background-color: #c9dfc5 !important;
+}
+
+.nonNumeric {
+  text-align: left;
+}
+
+.numeric {
+  text-align: right;
+}
+
+.negative {
+  color: red;
+}
+
+.estimate {
+  color: darkgray !important;
+}
+
+.singleIndex {
+  padding-left: 15px !important;
 }
 
 .subtotal {
-font-style: italic;
-font-weight: bold;
-background: #D3D3D3;
-
-/* Add customization here  */
-
+  font-style: italic;
+  font-weight: bold;
+  background: #D3D3D3;
 }
 
 .total {
-border-top: 2px solid #000000 !important;
-font-weight: bold !important;
-
-/* Add customization here  */
-
+  border-top: 2px solid #696969 !important;
+  font-weight: bold !important;
 }
 
 .total.transposed {
-border-top: 0px !important;
-background: #D3D3D3;
+  border-top: 0px !important;
+  background: #D3D3D3;
+}
 
-/* Add customization here  */
-
+.rectElem.animated {
+  font-family: Open Sans,Helvetica,Arial,sans-serif;
+  margin: 4px;
 }
