@@ -55,13 +55,14 @@
 
 th.headerCell {
   background-color: #F90083;
+  color: white; /*inserida*/
   padding: 5px;
   border-bottom: 1px solid #BDC3C7;
 }
 
 .headerCell.dimension {
   background-color: #0045DD;
-  text-decoration-color: white; /*inserida*/
+  color: white; /*inserida*/
   border-right: 1px solid #BDC3C7; 
 }
 
@@ -85,7 +86,7 @@ th.headerCell {
 }
 
 .headerCell.transposed.dimension.merged {
-  background-color: #02335d !important;
+  background-color: #93C3DD !important;
   color: white; /*inserida*/
   /*background-color: #e4ecf3 !important;*/
 }
