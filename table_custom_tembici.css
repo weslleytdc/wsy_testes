@@ -41,7 +41,7 @@
     display: none;
 }
 
-.hover {
+.hover { /*brackground do mouse over*/
   background-color: #dff7f5;
 }
 
@@ -53,7 +53,7 @@
   table-layout: fixed;
 }
 
-th.headerCell {
+th.headerCell { /*Colunas da dimension transposta*/
   background-color: #F90083;
   color: white; /*inserida*/
   padding: 5px;
@@ -85,9 +85,9 @@ th.headerCell {
   background-color: #F90083;
 }
 
-.headerCell.transposed.dimension.merged {
-  background-color: #93C3DD !important;
-  color: white; /*inserida*/
+.headerCell.transposed.dimension.merged { /*nome da dimensiona, primeira coluna da transposta*/
+  background-color: #ffffff !important;
+  color: black; /*inserida*/
   /*background-color: #e4ecf3 !important;*/
 }
 
