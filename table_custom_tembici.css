@@ -86,7 +86,7 @@ th.headerCell {
 
 .headerCell.transposed.dimension.merged {
   background-color: #02335d !important;
-  text-decoration-color: white; /*inserida*/
+  color: white; /*inserida*/
   /*background-color: #e4ecf3 !important;*/
 }
 
