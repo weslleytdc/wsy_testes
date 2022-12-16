@@ -42,7 +42,7 @@
 }
 
 .hover {
-  background-color: #0fec07;
+  background-color: #f8f1b1;
 }
 
 .reportTable {
@@ -84,7 +84,8 @@ th.headerCell {
 }
 
 .headerCell.transposed.dimension.merged {
-  background-color: #e4ecf3 !important;
+  background-color: #02335d !important;
+  /*background-color: #e4ecf3 !important;*/
 }
 
 /* .headerCell.dimension.headerRow {
