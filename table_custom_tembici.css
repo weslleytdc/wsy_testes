@@ -61,6 +61,7 @@ th.headerCell {
 
 .headerCell.dimension {
   background-color: #0045DD;
+  text-decoration-color: white; /*inserida*/
   border-right: 1px solid #BDC3C7; 
 }
 
@@ -75,7 +76,7 @@ th.headerCell {
 }
 
 .headerCell.measure.calculation {
-  background-color: #d61991;
+  background-color: #dfc5d6;
   border-left: 1px solid #BDC3C7;
 }
 
@@ -85,6 +86,7 @@ th.headerCell {
 
 .headerCell.transposed.dimension.merged {
   background-color: #02335d !important;
+  text-decoration-color: white; /*inserida*/
   /*background-color: #e4ecf3 !important;*/
 }
 
@@ -126,7 +128,8 @@ th.headerCell {
 }
 
 .indexCell.transposed.measure {
-  background-color: #e4d0bd;
+  background-color: #0045DD;
+  /*background-color: #e4d0bd;*/
 }
 
 .indexCell.transposed.calculation {
