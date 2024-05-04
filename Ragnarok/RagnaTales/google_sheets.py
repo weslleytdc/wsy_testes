@@ -7,11 +7,11 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms"
-SAMPLE_RANGE_NAME = "Class Data!A2:E"
+SAMPLE_SPREADSHEET_ID = "1rQ62S09Ym8WyNzK_Egls9hxOhGUHvw4HGIIFBFy_WuE"
+SAMPLE_RANGE_NAME = "base_mvp_timer!A2:E"
 
 
 def main():
@@ -22,19 +22,19 @@ def main():
   # The file token.json stores the user's access and refresh tokens, and is
   # created automatically when the authorization flow completes for the first
   # time.
-  if os.path.exists("token.json"):
-    creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+  if os.path.exists(r"C:\Users\wsyx4\Documents\github\wsy_testes\Ragnarok\RagnaTales\token.json"):
+    creds = Credentials.from_authorized_user_file(r"C:\Users\wsyx4\Documents\github\wsy_testes\Ragnarok\RagnaTales\token.json", SCOPES)
   # If there are no (valid) credentials available, let the user log in.
   if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
       creds.refresh(Request())
     else:
       flow = InstalledAppFlow.from_client_secrets_file(
-          "credentials.json", SCOPES
+          r"C:\Users\wsyx4\Documents\github\wsy_testes\Ragnarok\RagnaTales\credent.json", SCOPES
       )
       creds = flow.run_local_server(port=0)
     # Save the credentials for the next run
-    with open("token.json", "w") as token:
+    with open(r"C:\Users\wsyx4\Documents\github\wsy_testes\Ragnarok\RagnaTales\token.json", "w") as token:
       token.write(creds.to_json())
 
   try:
