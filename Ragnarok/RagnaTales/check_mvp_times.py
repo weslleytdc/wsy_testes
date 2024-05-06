@@ -65,6 +65,10 @@ def main():
 
             # Converter a coluna 'Data' para o formato datetime
             df['Data'] = pd.to_datetime(df['Data'], format='%d/%m/%Y, %H:%M')
+            df['Data'] = df['Data'].astype(str)
+
+            # Adicionando uma nova coluna com a data e hora atuais no formato de string
+            df['extract_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
             # Apenas saíra desse loob se não for nulo.
             if df.empty:

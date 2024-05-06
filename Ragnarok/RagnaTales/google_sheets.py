@@ -5,14 +5,26 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+import check_mvp_times as mvp_times
+import time
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = "1rQ62S09Ym8WyNzK_Egls9hxOhGUHvw4HGIIFBFy_WuE"
-SAMPLE_RANGE_NAME = "base_mvp_timer!A2:E"
+SAMPLE_RANGE_NAME = "base_mvp_timer!A2:F"
+SAMPLE_RANGE_TO_CLEAR = "base_mvp_timer!A2:F1000"
 
+
+def clear_range(service, spreadsheet_id, range_name):
+      request = service.spreadsheets().values().clear(
+          spreadsheetId=spreadsheet_id,
+          range=range_name,
+          body={}
+      )
+      response = request.execute()
+      print('Range limpo com sucesso.')
 
 def main():
   """Shows basic usage of the Sheets API.
@@ -22,41 +34,45 @@ def main():
   # The file token.json stores the user's access and refresh tokens, and is
   # created automatically when the authorization flow completes for the first
   # time.
-  if os.path.exists(r"C:\Users\wsyx4\Documents\github\wsy_testes\Ragnarok\RagnaTales\token.json"):
-    creds = Credentials.from_authorized_user_file(r"C:\Users\wsyx4\Documents\github\wsy_testes\Ragnarok\RagnaTales\token.json", SCOPES)
+  if os.path.exists("token.json"):
+    creds = Credentials.from_authorized_user_file("token.json", SCOPES)
   # If there are no (valid) credentials available, let the user log in.
   if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
       creds.refresh(Request())
     else:
       flow = InstalledAppFlow.from_client_secrets_file(
-          r"C:\Users\wsyx4\Documents\github\wsy_testes\Ragnarok\RagnaTales\credent.json", SCOPES
+          "credent.json", SCOPES
       )
       creds = flow.run_local_server(port=0)
     # Save the credentials for the next run
-    with open(r"C:\Users\wsyx4\Documents\github\wsy_testes\Ragnarok\RagnaTales\token.json", "w") as token:
+    with open("token.json", "w") as token:
       token.write(creds.to_json())
 
   try:
     service = build("sheets", "v4", credentials=creds)
 
-    # Call the Sheets API
-    sheet = service.spreadsheets()
-    result = (
-        sheet.values()
-        .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME)
-        .execute()
-    )
-    values = result.get("values", [])
+    
+    # Chamando extração de times MVP
+    df = mvp_times.main()
+    
+    # Limpando sheets
+    clear_range(service, SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_TO_CLEAR)
 
-    if not values:
-      print("No data found.")
-      return
+    # Transformar o DataFrame em uma lista de listas
+    valores = df.values.tolist()
 
-    print("Name, Major:")
-    for row in values:
-      # Print columns A and E, which correspond to indices 0 and 4.
-      print(f"{row[0]}, {row[4]}")
+      # Enviar os dados para o Google Sheets
+    body = {
+        'values': valores
+    }
+    result = service.spreadsheets().values().update(
+        spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME,
+        valueInputOption='RAW', body=body
+    ).execute()
+    print('{0} células atualizadas.'.format(result.get('updatedCells')))
+    
+   
   except HttpError as err:
     print(err)
 
